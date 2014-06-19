@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 
 <div data-role="header" data-theme="b">
-    		<h1>暗算</h1>
+    		<h1>暗算しましょう</h1>
 </div>
 
 <CENTER>
@@ -23,9 +23,9 @@ var number_array = new Array();
 var sum = 0;
 
 for(var i=0; i<roop; i++){
-//	var rondomNum = Math.floor(Math.random()*(10-(-10))+(-10));
+	var rondomNum = Math.floor(Math.random()*(10-(-10))+(-10));
 //	var rondomNum = Math.floor(Math.random()*(20-(1))+(1));
-	var rondomNum = Math.floor(Math.random()*(20-(1))+(1));
+//	var rondomNum = Math.floor(Math.random()*(20-(1))+(1));
 
 	if(rondomNum != 0){
 		number_array.push(rondomNum);
@@ -46,7 +46,7 @@ for(var i=0; i<10; i++){
     document.write("<br>"); 
     }
     document.write("<br>"); 
-    document.write("答えは(検証用に暫定表示)"); 
+    document.write("答えは(検証用)"); 
     document.write(sum); 
 </script>
 </CENTER>
@@ -83,7 +83,11 @@ function Sleep(t){
 
 var i = 0;
 function read_num(){
+	if(number_array[i] > 0){
 	speak("plus"+number_array[i++].toString());
+	}else{
+	speak(" "+number_array[i++].toString());
+	}
 	var tid = setTimeout(function(){
 		read_num();
 		},1400);
@@ -110,13 +114,14 @@ function read_num(){
 </form>
 <div id="audio"></div>
 <script>
+	read_num();
+	
 // for(var i=0; i<10; i++){
 //    if(number_array[i]<0){
 //		speak(number_array[i].toString());
 //var counter = 0 
 //var foo = function(){
 //    	couter++;
-	read_num();
 /*		var i=0;
     	setTimeout(speak(number_array[i].toString()), 2000);i++;
     	setTimeout(speak(number_array[i].toString()), 2000);i++;
@@ -186,7 +191,6 @@ function read_num(){
 
 //speak("answer please");    
 </script>
-
 </body>
 
 </html>
