@@ -1,0 +1,192 @@
+<!DOCTYPE html>  
+<html>
+<head>
+<meta charset="UTF-8" />  
+<meta name="viewport" content="width=device-width, initial-scale=1" />  
+<title>そろばん計算</title>
+<link rel="stylesheet"
+       href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css" />
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>  
+<script src="speakClient.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<div data-role="header" data-theme="b">
+    		<h1>暗算</h1>
+</div>
+
+<CENTER>
+<script type="text/Javascript">
+var roop = 10;
+var checkArray = new Array();
+var number_array = new Array();
+var sum = 0;
+
+for(var i=0; i<roop; i++){
+//	var rondomNum = Math.floor(Math.random()*(10-(-10))+(-10));
+//	var rondomNum = Math.floor(Math.random()*(20-(1))+(1));
+	var rondomNum = Math.floor(Math.random()*(20-(1))+(1));
+
+	if(rondomNum != 0){
+		number_array.push(rondomNum);
+	}else{
+    	roop++;
+	}
+}
+//答えを計算する
+for(var i=0;i<number_array.length;i++) sum = sum+number_array[i];
+
+
+//10個表示する
+document.write("計算してください!"); 
+document.write("<br>"); 
+document.write("<br>"); 
+for(var i=0; i<10; i++){
+    document.write(number_array[i]);
+    document.write("<br>"); 
+    }
+    document.write("<br>"); 
+    document.write("答えは(検証用に暫定表示)"); 
+    document.write(sum); 
+</script>
+</CENTER>
+
+<script type="text/Javascript">
+//正誤を判定し表示する。
+function process(){
+    var name = document.fm.name.value;
+       if (name == sum)
+       window.alert('正解!　'　+name);
+       else
+       window.alert('間違い！答えは　'　+sum);
+    return false;
+}
+</script>
+
+<script>
+//更新
+function koshin(){
+  location.reload();
+}
+</script>
+
+<script>
+//sleep
+function Sleep(t){ 
+   var d1 = new Date().getTime(); 
+   var d2 = new Date().getTime(); 
+   while( d2 < d1+t ){    //t秒待つ 
+       d2=new Date().getTime(); 
+   } 
+   return; 
+} 
+
+var i = 0;
+function read_num(){
+	speak("plus"+number_array[i++].toString());
+	var tid = setTimeout(function(){
+		read_num();
+		},1400);
+		if (i>10){
+			clearTimeout(tid);
+			}
+	}
+
+
+</script>
+
+</head>
+
+<body>
+
+
+<form name="fm" onsubmit="return process()">
+<input type=text name="name"/>
+<input type="submit" value="答え合わせ"/>
+</form>
+
+<form>
+<input type="button"  value="始める" onclick="koshin()">
+</form>
+<div id="audio"></div>
+<script>
+// for(var i=0; i<10; i++){
+//    if(number_array[i]<0){
+//		speak(number_array[i].toString());
+//var counter = 0 
+//var foo = function(){
+//    	couter++;
+	read_num();
+/*		var i=0;
+    	setTimeout(speak(number_array[i].toString()), 2000);i++;
+    	setTimeout(speak(number_array[i].toString()), 2000);i++;
+    	setTimeout(speak(number_array[i].toString()), 2000);i++;
+    	setTimeout(speak(number_array[i].toString()), 2000);i++;
+    	setTimeout(speak(number_array[i].toString()), 2000);i++;
+*/
+    	
+//}
+//    	}
+//        speak(number_array[i].toString());
+//        }else{
+//    	setTimeout('speak("plus")', 1000);
+//		setTimeout('speak(number_array[i].toString())', 1000);
+//        speak(number_array[i].toString());
+//    	}
+
+/*
+    switch(number_array[i]){
+        case    0:
+            speak("0",{speed:150,wordgap: 10});
+            break;
+        case    1:
+        case    -1:
+            speak("1",{speed:150,wordgap: 10});
+            break;
+        case    2:
+        case    -2:
+            speak("2",{speed:150,wordgap: 10});
+            break;
+        case    3:
+        case    -3:
+            speak("3",{speed:150,wordgap: 10});
+            break;
+        case    4:
+        case    -4:
+            speak("4",{speed:150,wordgap: 10});
+            break;
+        case    5:
+        case    -5:
+            speak("5",{speed:150,wordgap: 10});
+            break;
+        case    6:
+        case    -6:
+            speak("6",{speed:150,wordgap: 10});
+            break;
+        case    7:
+        case    -7:
+            speak("7",{speed:150,wordgap: 10});
+            break;
+        case    8:
+        case    -8:
+            speak("8",{speed:150,wordgap: 10});
+            break;
+        case    9:
+        case    -9:
+            speak("9",{speed:150,wordgap: 10});
+            break;
+        case    10:
+        case    -10:
+            speak("10",{speed:150,wordgap: 10});
+            break;
+        default:        
+            break;
+        }
+        */
+
+//speak("answer please");    
+</script>
+
+</body>
+
+</html>
