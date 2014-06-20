@@ -54,7 +54,7 @@ for(var i=0; i<5; i++){
 <script type="text/Javascript">
 //正誤を判定し表示する。
 function process(){
-    var name = document.fm.slider.value;
+    var name = document.fm.name.value;
        if (name == sum)
        window.alert('正解!　'　+name);
        else
@@ -91,14 +91,17 @@ function read_num(){
 			clearTimeout(tid);
 			}
 	}
+
+
 </script>
+
 </head>
 
 <body>
 
+
 <form name="fm" onsubmit="return process()">
-<label for="slider-0">回答</label>
-<input type="range" name="slider" id="slider-0" value="25" min="-50" max="50"  />
+<input type=text name="name"/>
 <input type="submit" value="答え合わせ"/>
 </form>
 
@@ -111,8 +114,6 @@ function read_num(){
 	
 //speak("answer result");    
 </script>
-
-
 </body>
 
 </html>
