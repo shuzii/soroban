@@ -48,8 +48,8 @@ for(var i=0; i<5; i++){
     document.write("<br>"); 
     }
     document.write("<br>"); 
-    document.write("検証用"); 
-    document.write(sum); 
+//    document.write("検証用"); 
+//    document.write(sum); 
 </script>
 </CENTER>
 
@@ -77,8 +77,10 @@ function koshin(){
 </script>
 
 <script>
+
 var i = 0;
 function read_num(){
+//		speak("ready")},1500);   
 	if(number_array[i] > 0){
 	speak("plus"+number_array[i++].toString());
 	}else{
@@ -90,10 +92,14 @@ function read_num(){
 		if (i>4){
 		setTimeout(function(){
 		speak(" answer please")},1500);   
+//		speak("kotaeha")},1500);   
+		
 			clearTimeout(tid);
 			}
 	}
 </script>
+
+ 
 </head>
 
 <body>
@@ -110,8 +116,9 @@ function read_num(){
 <div id="audio"></div>
 <script>
 	read_num();
+	
+//speak("answer result");    
 </script>
-
 </body>
 
 </html>
